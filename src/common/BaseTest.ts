@@ -30,6 +30,7 @@ export const test = base.extend<MyFixtures>({
 test.beforeEach(async ({ pages }) => {
     logger.clear();
     await pages.getPage(HomePage).openAUT();
+    await pages.getPage(HomePage).closePopup();
 });
 
 test.afterEach(async ({ page }, testInfo) => {

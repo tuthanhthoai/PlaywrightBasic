@@ -6,7 +6,9 @@
     "test": "npx playwright test",
     "test:headed": "npx playwright test --headed",
     "test:chrome": "npx playwright test tests/web --project=Chrome",
+    "test:file:chrome": "npx playwright test --project=Chrome",
     "test:chromium": "npx playwright test tests/web --project=Chromium",
+    "test:file:chromium": "npx playwright test --project=Chromium",
     "test:firefox": "npx playwright test tests/web --project=Firefox",
     "test:webkit": "npx playwright test tests/web --project=WebKit",
     "test:report": "npx playwright show-report"
