@@ -2,18 +2,15 @@ import { Locator, Page } from "@playwright/test";
 import { AbstractPage } from "./AbstractPage";
 
 export class GeneralPage extends AbstractPage {
-    private readonly logInAndSignUpLnk: Locator;
-    private readonly closePopupButton: Locator;
-    private departmentLink = '//div[span[.="All departments"]]/following-sibling::div//a[text()="%s"]';
+    private logInAndSignUpLink = this.page.getByRole('link', { name: /Log in/ });
+    private closePopupButton = this.page.getByRole('button', { name: 'Close' });
 
     constructor(page: Page) {
         super(page);
-        this.logInAndSignUpLnk = page.getByRole('link', { name: /Log in/ });
-        this.closePopupButton = page.getByRole('button', { name: 'Close' });
     }
 
     async goToMyAccountPage() {
-        await this.logInAndSignUpLnk.click();
+        await this.logInAndSignUpLink.click();
     }
 
     public async changePage(pageName: string) {
