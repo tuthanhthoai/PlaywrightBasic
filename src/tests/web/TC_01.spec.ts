@@ -1,17 +1,14 @@
 import { test } from '../../common/BaseTest';
-import { HomePage } from '../../pages/web/HomePage';
-import { MyAccountPage } from '../../pages/web/MyAccountPage';
+import { HomePage } from '../../pages/web/web-demo/HomePage';
+import { MyAccountPage } from '../../pages/web/web-demo/MyAccountPage';
 
-test.describe("@Demo", async () => {
-    test('TC01_Verify users can buy an item successfully', async ({ pages }) => {
+test.describe("@TC01", async () => {
+    test('TC01_Verify users can buy an item successfully', async ({ pages, account  }) => {
         const homePage = pages.getPage(HomePage);
         const myAccountPage = pages.getPage(MyAccountPage);
 
-        homePage.goToMyAccountPage();
-        // homePage.clickLogIn();
-
         await test.step('User logs in ', async () => {
-            await myAccountPage.login("vn7sq9+etjkuu2ubpjs4@sharklasers.com", "test123123");
+            await myAccountPage.login(account.email, account.password);
         });
 
         await test.step('Navigate to Electronic Components & Supplies', async () => {

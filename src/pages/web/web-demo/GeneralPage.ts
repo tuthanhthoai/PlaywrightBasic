@@ -1,9 +1,12 @@
 import { Locator, Page } from "@playwright/test";
 import { AbstractPage } from "./AbstractPage";
+import { logger } from '../../../helpers/LoggerHelper';
+import { UIHelper } from '../../../helpers/UIHelper';
 
 export class GeneralPage extends AbstractPage {
     private logInAndSignUpLink = this.page.getByRole('link', { name: /Log in/ });
     private closePopupButton = this.page.getByRole('button', { name: 'Close' });
+    private allDepartmentsDropdown = this.page.getByText('All departments', { exact: true });
 
     constructor(page: Page) {
         super(page);
@@ -18,11 +21,11 @@ export class GeneralPage extends AbstractPage {
     }
 
     public async chooseDepartment(departmentName: string) {
-        await this.page.getByText('All departments').click();
+        await this.allDepartmentsDropdown.click();
         await this.page.getByRole('link', { name: departmentName }).click();
     }
 
-    public async closePopup() {
+    public async closePopup(): Promise<void> {
         try {
             await this.closePopupButton.waitFor({ state: 'visible', timeout: 30000 });
             if (await this.closePopupButton.isVisible()) {

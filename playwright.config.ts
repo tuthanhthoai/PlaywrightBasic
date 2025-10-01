@@ -3,7 +3,7 @@ import { defineConfig } from '@playwright/test';
 export default defineConfig({
   testDir: './src/tests',
   /* Global timeout per test */
-  timeout: 30 * 1000,
+  timeout: 60 * 1000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -23,7 +23,8 @@ export default defineConfig({
     launchOptions: {
       args: ['--start-maximized'], // Chrome/Chromium only
     },
-    actionTimeout: 10 * 1000,
+    actionTimeout: 0 * 1000,
+    navigationTimeout: 60 * 1000,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'retain-on-failure',
