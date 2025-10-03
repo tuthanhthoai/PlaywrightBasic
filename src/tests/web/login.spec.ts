@@ -9,7 +9,7 @@ test.describe('@Demo', () => {
         const myAccountPage = pages.getPage(MyAccountPage);
         logger.info("Pre: Register a valid account");
         logger.info("Navigate to My Account page")
-        homePage.goToMyAccountPage();
+        homePage.clickLogIn();
     })
 })
 

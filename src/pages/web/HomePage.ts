@@ -1,14 +1,9 @@
-import { Page } from '@playwright/test';
 import { GeneralPage } from './GeneralPage';
 
 export class HomePage extends GeneralPage {
   private searchInput = this.page.locator('input[name="q"]');
   private searchButton = this.page.locator('button[type="submit"]');
   private header = this.page.locator('h1');
-
-  constructor(page: Page) {
-    super(page);
-  }
 
   public async search(keyword: string) {
     await this.searchInput.fill(keyword);

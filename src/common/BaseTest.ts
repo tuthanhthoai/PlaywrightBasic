@@ -2,8 +2,7 @@ import { test as base } from '@playwright/test';
 import { PageManagerHelper } from '../helpers/PageManagerHelper';
 import { logger } from '../helpers/LoggerHelper';
 import { HomePage } from '../pages/web/HomePage';
-// import { HomePage } from "../pages/web/HomePage";
-// import { MyAccountPage } from "../pages/web/MyAccountPage";
+import { MyAccountPage } from "../pages/web/MyAccountPage";
 
 type MyFixtures = {
     // homePage: HomePage;
@@ -27,8 +26,9 @@ export const test = base.extend<MyFixtures>({
     },
 });
 
-test.beforeEach(async ({ pages }) => {
+test.beforeEach(async ({ pages, baseURL }) => {
     logger.clear();
+    logger.info(`Navigate to the AUT ${baseURL}`);
     await pages.getPage(HomePage).openAUT();
 });
 

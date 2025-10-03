@@ -1,4 +1,3 @@
-import { Page } from '@playwright/test';
 import { AbstractPage } from './AbstractPage';
 
 export class GeneralPage extends AbstractPage{
@@ -6,14 +5,6 @@ export class GeneralPage extends AbstractPage{
   private menuLink = '//div[contains(@class,"header-bottom-wrapper")]//a[text()="%s"]';
   private allDepartmentsLink = '//span[.="All departments"]';
   private departmentLink = '//div[span[.="All departments"]]/following-sibling::div//a[text()="%s"]';
-
-  constructor(page: Page) {
-    super(page);
-  }
-
-  public async goto(url: string) {
-    await this.page.goto(url);
-  }
 
   public async changePage(pageName: string) {
     const menuXpath = this.menuLink.replace('%s', pageName);
