@@ -1,16 +1,10 @@
-import { Page } from '@playwright/test';
+import { AbstractPage } from './AbstractPage';
 
-export class GeneralPage {
+export class GeneralPage extends AbstractPage{
   private loginLink = '//div[@class="header-top-wrapper "]//a[contains(@href, "my-account")]';
   private menuLink = '//div[contains(@class,"header-bottom-wrapper")]//a[text()="%s"]';
   private allDepartmentsLink = '//span[.="All departments"]';
   private departmentLink = '//div[span[.="All departments"]]/following-sibling::div//a[text()="%s"]';
-
-  constructor(protected page: Page) {}
-
-  public async goto(url: string) {
-    await this.page.goto(url);
-  }
 
   public async changePage(pageName: string) {
     const menuXpath = this.menuLink.replace('%s', pageName);
